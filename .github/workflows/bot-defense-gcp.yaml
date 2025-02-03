@@ -153,8 +153,7 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-bot-defense-gcp' && github.event_name == 'push'
-        run: |
-          cat gcp-xcbotdefense-app.yaml
+        run: 
           terraform apply -auto-approve -input=false
 
   terraform_app:
