@@ -227,7 +227,11 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-bot-defense-gcp' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        run: |
+          rm -rf manifest.yaml
+          mv gcp-xcbotdefense-app.yaml manifest.yaml
+          cat manifest.yaml
+          terraform apply -auto-approve -input=false
 
   terraform_bigip:
     name: "Deploy BIGIP"
