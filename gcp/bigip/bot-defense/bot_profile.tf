@@ -28,7 +28,7 @@ resource "bigip_ltm_pool" "pool" {
   name                      = "/Common/terraform_Pool"
   load_balancing_mode       = "round-robin"
   minimum_active_members    = 1
-  monitors                  = [bigip_ltm_monitor.monitor.name]
+  monitors                  = [bigip_ltm_monitor.monitor.parent]
 }
 
 resource "bigip_ltm_pool_attachment" "attach_node" {
