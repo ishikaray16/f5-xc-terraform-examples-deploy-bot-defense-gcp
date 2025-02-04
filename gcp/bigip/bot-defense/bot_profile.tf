@@ -42,7 +42,7 @@ resource "bigip_ltm_virtual_server" "http" {
   description                = "VS-terraform"
   port                       = 80
   pool                       = bigip_ltm_pool.pool.name
-  profiles                   = ["/Common/tcp", "/Common/http", "/common/bd"]
+  profiles                   = ["/Common/tcp", "/Common/http", "/Common/bd"]
   source_address_translation = "automap"
   translate_address          = "enabled"
   translate_port             = "enabled"
