@@ -37,7 +37,7 @@ resource "bigip_ltm_pool_attachment" "attach_node" {
 }
 
 resource "bigip_ltm_virtual_server" "http" {
-  name                       = "/Common/terraform_vs1"
+  name                       = "/Common/terraform_vs"
   destination                = local.bigip_private
   description                = "VS-terraform"
   port                       = 80
