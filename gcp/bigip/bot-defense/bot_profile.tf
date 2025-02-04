@@ -15,7 +15,7 @@ resource "bigip_ltm_node" "node" {
   address                 = local.app_ip
   connection_limit        = "0"
   dynamic_ratio           = "1"
-  monitor                 = "/Common/icmp"
+  monitor                 = "/Common/tcp"
   description             = "Terraform-Node"
   rate_limit              = "disabled"
   fqdn {
@@ -42,7 +42,7 @@ resource "bigip_ltm_virtual_server" "http" {
   description                = "VS-terraform"
   port                       = 80
   pool                       = bigip_ltm_pool.pool.name
-  profiles                   = ["/Common/tcp", "/Common/http", "/Common/bd"]
+  profiles                   = ["/Common/tcp", "/Common/http"]
   source_address_translation = "automap"
   translate_address          = "enabled"
   translate_port             = "enabled"
