@@ -11,7 +11,7 @@ resource "bigip_ltm_monitor" "monitor" {
 }
 
 resource "bigip_ltm_node" "node" {
-  name                    = "/Common/terraform_node1"
+  name                    = "/Common/terraform_node"
   address                 = local.app_ip
   connection_limit        = "0"
   dynamic_ratio           = "1"
@@ -37,7 +37,7 @@ resource "bigip_ltm_pool_attachment" "attach_node" {
 }
 
 resource "bigip_ltm_virtual_server" "http" {
-  name                       = "/Common/terraform_vs"
+  name                       = "/Common/terraform_vs1"
   destination                = local.bigip_private
   description                = "VS-terraform"
   port                       = 80
