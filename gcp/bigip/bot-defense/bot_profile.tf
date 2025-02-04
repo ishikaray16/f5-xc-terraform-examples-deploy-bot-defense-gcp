@@ -15,7 +15,7 @@ resource "bigip_ltm_node" "node" {
   address                 = local.app_ip
   connection_limit        = "0"
   dynamic_ratio           = "1"
-  monitor                 = "/Common/tcp"
+  monitor                 = "/Common/icmp"
   description             = "Terraform-Node"
   rate_limit              = "disabled"
   fqdn {
