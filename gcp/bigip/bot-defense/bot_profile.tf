@@ -12,8 +12,7 @@ resource "bigip_ltm_monitor" "monitor" {
 
 resource "bigip_ltm_node" "node" {
   name                    = "/Common/terraform_node1"
-  address                  = "10.0.0.51"
-#  address                 = local.app_ip
+  address                 = local.app_ip
 #  connection_limit        = "0"
 #  dynamic_ratio           = "1"
 #  monitor                 = "/Common/icmp"
