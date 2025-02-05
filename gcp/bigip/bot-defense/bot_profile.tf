@@ -6,7 +6,7 @@ provider "bigip" {
 }
 
 resource "bigip_ltm_monitor" "monitor" {
-  name                    = "/Common/terraform_monitor"
+  name                    = "/Common/terraform_monitor1"
   parent                  = "/Common/tcp"
 }
 
@@ -25,7 +25,7 @@ resource "bigip_ltm_node" "node" {
 }
 
 resource "bigip_ltm_pool" "pool" {
-  name                      = "/Common/terraform_Pool"
+  name                      = "/Common/terraform_Pool1"
   load_balancing_mode       = "round-robin"
   minimum_active_members    = 1
   monitors                  = [bigip_ltm_monitor.monitor.parent]
