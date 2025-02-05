@@ -18,10 +18,10 @@ resource "bigip_ltm_node" "node" {
   monitor                 = "/Common/icmp"
   description             = "Terraform-Node"
   rate_limit              = "disabled"
-  fqdn {
-    address_family        = "ipv4"
-    interval              = "3000"
-  }
+#  fqdn {
+#    address_family        = "ipv4"
+#    interval              = "3000"
+#  }
 }
 
 resource "bigip_ltm_pool" "pool" {
@@ -50,7 +50,6 @@ resource "bigip_ltm_virtual_server" "http" {
 
 
 # Creating the XC Bot Defense Profile on BIG-IP:
-
 #
 #resource "bigip_as3" "as3-example1" {
 #  as3_json    = file("as3.json")
@@ -93,7 +92,7 @@ resource "bigip_ltm_virtual_server" "http" {
 #    name                  = “pend”
 #    host                  = “abc.com”
 #    path                  = "/user/signin"
-#    endpoint_label              = "/login"
+#    endpoint_label        = "/login"
 #    post                  = "enabled"
 #    put                   = "enabled"
 #    mitigation_action     = "/block"
