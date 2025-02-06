@@ -53,7 +53,7 @@ resource "kubectl_manifest" "app-service" {
 kind: Service
 apiVersion: v1
 metadata:
-  name: airline-flask
+  name: gcp-xcbotdefense-namespace1
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
 spec:
