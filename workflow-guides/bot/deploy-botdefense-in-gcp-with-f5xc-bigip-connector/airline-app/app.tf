@@ -70,15 +70,14 @@ spec:
 YAML
 }
 
-data "kubernetes_manifest" "lb_service_status" {
-  manifest {
-    api_version = "v1"
-    kind        = "Service"
-    metadata {
-      name      = "airline-flask"
-      namespace = "gcp-xcbotdefense-namespace1"
-    }
-  }
- 
+data "external" "fetch_lb_ip" {
+  program = ["sh", "-c", <<EOT
+    kubectl get service airline-flask -n default -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{output: input}'
+  EOT]
+
   depends_on = [kubectl_manifest.app-service] 
+}
+
+output "lb_service_external_ip" {
+  value = data.external.fetch_lb_ip.result["output"]
 }
