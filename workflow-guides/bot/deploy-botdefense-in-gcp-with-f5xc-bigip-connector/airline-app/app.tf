@@ -69,3 +69,16 @@ spec:
   sessionAffinity: None
 YAML
 }
+
+data "kubernetes_manifest" "lb_service_status" {
+  manifest {
+    api_version = "v1"
+    kind        = "Service"
+    metadata {
+      name      = "airline-flask"
+      namespace = "gcp-xcbotdefense-namespace1"
+    }
+  }
+ 
+  depends_on = [kubectl_manifest.app-service] 
+}
