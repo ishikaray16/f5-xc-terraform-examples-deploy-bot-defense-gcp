@@ -70,7 +70,7 @@ spec:
 YAML
 }
 
-resource "kubernetes_manifest" "lb_service_status" {
+data "kubernetes_manifest" "lb_service_status" {
   manifest {
     api_version = "v1"
     kind        = "Service"

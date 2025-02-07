@@ -13,6 +13,6 @@ provider "kubernetes" {
     host                    = local.host
     cluster_ca_certificate  = base64decode(local.cluster_ca_certificate)
     token                   = local.cluster_token
-    load_config_file        = false
+#    load_config_file        = false
 }
  
