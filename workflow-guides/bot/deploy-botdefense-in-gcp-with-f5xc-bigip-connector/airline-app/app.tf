@@ -70,11 +70,11 @@ spec:
 YAML
 }
 
-data "external" "fetch_lb_ip" {
-  depends_on = [kubectl_manifest.app-service] 
-  program = ["sh", "-c", "kubectl get svc example-load-balancer -n default -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{output: input}'"]
-}
+#data "external" "fetch_lb_ip" {
+#  depends_on = [kubectl_manifest.app-service] 
+#  program = ["sh", "-c", "kubectl get svc example-load-balancer -n default -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{output: input}'"]
+#}
 
-output "lb_service_external_ip" {
-  value = data.external.fetch_lb_ip.result["output"]
-}
+#output "lb_service_external_ip" {
+#  value = data.external.fetch_lb_ip.result["output"]
+#}
