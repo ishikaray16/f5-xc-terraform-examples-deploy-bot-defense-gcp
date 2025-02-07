@@ -72,7 +72,7 @@ YAML
 
 data "external" "fetch_lb_ip" {
   depends_on = [kubectl_manifest.app-service] 
-  program = ["sh", "-c", kubectl get service airline-flask -n gcp-xcbotdefense-namespace1 -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{"output": "input"}']
+  program = ["sh", "-c", "kubectl get service airline-flask -n gcp-xcbotdefense-namespace1 -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{"output": "input"}'"]
 }
 
 output "lb_service_external_ip" {
