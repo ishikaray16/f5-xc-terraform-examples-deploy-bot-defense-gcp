@@ -54,6 +54,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: airline-flask
+  namespace: gcp-xcbotdefense-namespace1
   annotations:
     networking.gke.io/load-balancer-type: "Internal"
 spec:
@@ -64,7 +65,16 @@ spec:
   selector:
     app: airline-flask
   type: LoadBalancer
-  loadBalancerIP: "${local.lb_ip}"
+# loadBalancerIP: "${local.lb_ip}"
   sessionAffinity: None
 YAML
 }
+
+#data "external" "fetch_lb_ip" {
+#  depends_on = [kubectl_manifest.app-service] 
+#  program = ["sh", "-c", "kubectl get svc example-load-balancer -n default -o jsonpath='{.status.loadBalancer.ingress[0].ip}' | jq -n '{output: input}'"]
+#}
+
+#output "lb_service_external_ip" {
+#  value = data.external.fetch_lb_ip.result["output"]
+#}

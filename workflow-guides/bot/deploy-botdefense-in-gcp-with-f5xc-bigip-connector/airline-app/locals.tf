@@ -6,5 +6,5 @@ locals {
   cluster_name           = data.tfe_outputs.gke.values.kubernetes_cluster_name
   cluster_token          = data.tfe_outputs.gke.values.kubernetes_cluster_access_token
   cidr                   = data.tfe_outputs.infra.values.cidr
-  lb_ip                  = cidrhost(local.cidr, 50)
+  lb_ip                  = cidrhost(local.cidr)
 }
