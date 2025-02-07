@@ -9,15 +9,6 @@ provider "kubectl" {
     load_config_file        = false
 }
 
-terraform {
-  required_providers {
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "2.35.1"
-    }
-  }
-}
-
 provider "kubernetes" {
     host                    = local.host
     cluster_ca_certificate  = base64decode(local.cluster_ca_certificate)
