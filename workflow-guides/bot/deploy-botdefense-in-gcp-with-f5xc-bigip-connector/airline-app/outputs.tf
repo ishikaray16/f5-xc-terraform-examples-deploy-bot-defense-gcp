@@ -1,4 +1,4 @@
 output "app_ip" {
   value     = local.lb_ip
-  sensitive = false
+  sensitive = true
 }
