@@ -9,7 +9,7 @@ provider "kubectl" {
     load_config_file        = false
 }
 
-provider "kubernetes" {
+provider "kustomize" {
     host                    = local.host
     cluster_ca_certificate  = base64decode(local.cluster_ca_certificate)
     token                   = local.cluster_token

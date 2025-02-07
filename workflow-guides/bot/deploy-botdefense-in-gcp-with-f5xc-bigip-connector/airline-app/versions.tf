@@ -10,9 +10,9 @@ terraform {
       source  = "gavinbunney/kubectl"
       version = ">= 1.7.0"
     }
-    kubernetes = {
-      source = "hashicorp/kubernetes"
-      version = "2.35.1"
+    kustomize = {
+      source = "kbst/kustomize"
+      version = "0.5.0"
     }
   }
 }
