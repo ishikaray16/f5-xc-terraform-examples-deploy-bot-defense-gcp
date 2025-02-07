@@ -225,15 +225,11 @@ jobs:
         if: steps.plan.outcome == 'failure'
         run: exit 1
 
-      - name: Terraform Refresh
-        if: github.ref == 'refs/heads/deploy-bot-defense-gcp' && github.event_name == 'push'
-        run: 
-          terraform refresh
-
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-bot-defense-gcp' && github.event_name == 'push'
-        run: 
-          terraform apply -auto-approve -input=false
+        run: |
+          terraform apply -auto-approve -input=false 
+          terraform output app_ip
 
   # terraform_bigip:
   #   name: "Deploy BIGIP"
