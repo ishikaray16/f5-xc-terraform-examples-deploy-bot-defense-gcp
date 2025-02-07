@@ -15,7 +15,7 @@ resource "bigip_ltm_node" "node" {
   address                 = local.app_ip
 #  connection_limit        = "0"
 #  dynamic_ratio           = "1"
-  monitor                 = "/Common/icmp"
+#  monitor                 = "/Common/icmp"
   description             = "Terraform-Node"
 #  rate_limit              = "disabled"
 #  fqdn {
@@ -80,7 +80,7 @@ resource "bigip_ltm_virtual_server" "http" {
 #}
 #
 #resource "bigip_ltm_bot_defense_profile” “test_bot_defense” {
-#  profile_name            = "/Common/test-bot-defense"
+#  name                    = "/Common/test-bot-defense"
 #  application_id          = “509df7c18c58484f82157ded358a8010”
 #  tenant_id               = "treino-ufahspac"
 #  api_key                 = "MkkKBKF3lvoiIGlUr-N-Szll4d5PhAYJTFEoF5kdrj0"
