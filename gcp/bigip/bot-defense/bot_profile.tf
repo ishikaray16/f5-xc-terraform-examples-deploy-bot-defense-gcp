@@ -106,4 +106,5 @@ resource "bigip_ltm_virtual_server" "http" {
 #  source_address_translation = "automap"
 #  translate_address          = "enabled"
 #  translate_port             = "enabled"
-}
+#}
+#
