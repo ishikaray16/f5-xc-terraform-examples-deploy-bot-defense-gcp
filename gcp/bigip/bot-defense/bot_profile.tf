@@ -69,17 +69,17 @@ resource "bigip_xc_bot_protection_pool" "protection_pool" {
   monitors                  = [bigip_xc_bot_defense_monitor.monitor.parent]
 }
 
-resource "bigip_xc_bot_defense_profile” “bot_profile” {
+resource "bigip_xc_bot_defense_profile" "bot_profile" {
   name                    = "/Common/test_xc_bot_defense"
   application_id          = var.application_id
   tenant_id               = var.tenant_id
   api_key                 = var.api_key
-  api_hostname            = var.bot_pool_name
+  api_hostname            = var.api_hostname
   telemetry_header_prefix = var.telemetry_header_prefix
   ssl_profile             = "serverssl"
   protected_endpoints {
-    name                  = “p_endpoint”
-    host                  = “abc.com”
+    name                  = "p_endpoint"
+    host                  = "abc.com"
     path                  = "/user/signin"
     endpoint_label        = "/login"
     post                  = "enabled"
