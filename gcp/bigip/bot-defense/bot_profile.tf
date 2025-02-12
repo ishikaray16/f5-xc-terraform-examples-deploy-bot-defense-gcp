@@ -56,7 +56,7 @@ resource "bigip_ltm_monitor" "monitor2" {
 }
 
 resource "bigip_ltm_node" "node2" {
-  name                    = "ibd-webus.fastcache.net"
+  name                    = /Common/ibd-webus.fastcache.net
   address                 = "ibd-webus.fastcache.net"
   monitor                 = "none"
   description             = "Terraform-Node-Bot-Defense"
@@ -74,14 +74,13 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense2" {
   application_id          = var.application_id
   tenant_id               = var.tenant_id
   api_key                 = var.api_key
-  api_hostname            = var.api_hostname
-  telemetry_header_prefix = var.telemetry_header_prefix
+  shape_protection_pool   = "/Common/cs1.pool"
   ssl_profile             = "serverssl"
   protected_endpoints {
     name                  = "p_endpoint"
     host                  = "4.155.79.249"
-    path                  = "/user/signin"
-    endpoint_label        = "/login"
+    #path                  = "/user/signin"
+    #endpoint_label        = "/login"
     post                  = "enabled"
     put                   = "enabled"
     mitigation_action     = "block"
