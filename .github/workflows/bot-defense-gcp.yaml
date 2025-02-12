@@ -350,10 +350,10 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-          TF_VAR_application_id: ${{ secrets.APPLICATION_ID }}
-          TF_VAR_tenant_id: ${{ secrets.TENANT_ID }}
-          TF_VAR_telemetry_header_prefix: ${{ secrets.TELEMETRY_HEADER_PREFIX }}
-          TF_VAR_api_key: ${{ secrets.API_KEY }}
+          # TF_VAR_application_id: ${{ secrets.APPLICATION_ID }}
+          # TF_VAR_tenant_id: ${{ secrets.TENANT_ID }}
+          # TF_VAR_telemetry_header_prefix: ${{ secrets.TELEMETRY_HEADER_PREFIX }}
+          # TF_VAR_api_key: ${{ secrets.API_KEY }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
