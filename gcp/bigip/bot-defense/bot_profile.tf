@@ -46,9 +46,9 @@ resource "bigip_ltm_virtual_server" "http" {
 
 # CREATING XC BOT DFEENSE PROFILE ON BIGIP
 
-resource "bigip_as3" "as3-example1" {
-  as3_json    = file("as3.json")
-}
+#resource "bigip_as3" "as3-example1" {
+#  as3_json    = file("as3.json")
+#}
 
 resource "bigip_ltm_monitor" "monitor2" {
   name                    = "/Common/terraform_monitor_bd"
@@ -69,18 +69,18 @@ resource "bigip_ltm_pool" "pool2" {
   monitors                  = [bigip_ltm_monitor.monitor2.parent]
 }
 
-resource "bigip_saas_bot_defense_profile" "test-bot-defense2" {
+resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   name                    = "/Common/test_xc_bot_defense"
-  application_id          = var.application_id
-  tenant_id               = var.tenant_id
-  api_key                 = var.api_key
+  application-id          = var.application_id
+  tenant-id               = var.tenant_id
+  api-key                 = var.api_key
   shape_protection_pool   = "/Common/cs1.pool"
-  ssl_profile             = "serverssl"
+  ssl_profile             = "/Common/cloud-service-default-ssl"
   protected_endpoints {
     name                  = "p_endpoint"
     host                  = "4.155.79.249"
     #path                  = "/user/signin"
-    #endpoint_label        = "/login"
+    endpoint              = "/login"
     post                  = "enabled"
     put                   = "enabled"
     mitigation_action     = "block"
@@ -95,13 +95,13 @@ resource "bigip_ltm_pool_attachment" "attach_node2" {
 # BINDING THE XC BOT PROFILE TO VIRTUAL SERVER
 
 #resource "bigip_ltm_virtual_server" "https2" {
-#  name                        = "/Common/terraform_bd"
-#  destination                 = local.bigip_private
+#  name                        = "/Common/terraform_vs2"
+#  destination                 = local.app_ip
 #  description                 = "VS-terraform-xc-bot"
 #  port                        = 443
 #  bot_defense                 = "enabled"
 #  pool                        = bigip_ltm_pool.pool2.name
-#  profiles                    = [bigip_saas_bot_defense_profile.test-bot-defense2]
+#  profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense2.name]
 #  source_address_translation = "automap"
 #  translate_address          = "enabled"
 #  translate_port             = "enabled"
