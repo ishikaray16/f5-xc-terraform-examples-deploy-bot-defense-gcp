@@ -71,9 +71,9 @@ resource "bigip_ltm_pool" "pool2" {
 
 resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   name                    = "/Common/test_xc_bot_defense"
-  application-id          = var.application_id
-  tenant-id               = var.tenant_id
-  api-key                 = var.api_key
+  application_id          = var.application_id
+  tenant_id               = var.tenant_id
+  api_key                 = var.api_key
   shape_protection_pool   = "/Common/cs1.pool"
   ssl_profile             = "/Common/cloud-service-default-ssl"
   protected_endpoints {
