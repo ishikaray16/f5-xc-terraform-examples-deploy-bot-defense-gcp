@@ -50,26 +50,26 @@ resource "bigip_as3" "as3-example1" {
   as3_json    = file("as3.json")
 }
 
-resource "bigip_ltm_monitor" "monitor" {
+resource "bigip_ltm_monitor" "monitor2" {
   name                    = "/Common/terraform_monitor_bd"
   parent                  = "/Common/https_443"
 }
 
-resource "bigip_ltm_node" "node" {
+resource "bigip_ltm_node" "node2" {
   name                    = var.bot_pool_name
   address                 = var.bot_pool_name
   monitor                 = "none"
   description             = "Terraform-Node-Bot-Defense"
 }
 
-resource "bigip_ltm_pool" "pool" {
+resource "bigip_ltm_pool" "pool2" {
   name                      = "/Common/terraform_protection_pool"
   load_balancing_mode       = "round-robin"
   minimum_active_members    = 1
-  monitors                  = [bigip_ltm_monitor.monitor.parent]
+  monitors                  = [bigip_ltm_monitor.monitor2.parent]
 }
 
-resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
+resource "bigip_saas_bot_defense_profile" "test-bot-defense2" {
   name                    = "/Common/test_xc_bot_defense"
   application_id          = var.application_id
   tenant_id               = var.tenant_id
@@ -88,21 +88,21 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   }
 }
 
-resource "bigip_ltm_pool_attachment" "attach_node" {
-  pool                      = bigip_ltm_pool.pool.name
-  node                      = "${bigip_ltm_node.node.name}:443"
+resource "bigip_ltm_pool_attachment" "attach_node2" {
+  pool                      = bigip_ltm_pool.pool2.name
+  node                      = "${bigip_ltm_node.node2.name}:443"
 }
 
 # BINDING THE XC BOT PROFILE TO VIRTUAL SERVER
 
-resource "bigip_ltm_virtual_server" "https" {
+resource "bigip_ltm_virtual_server" "https2" {
   name                        = "/Common/terraform_bd"
   destination                 = local.bigip_private
   description                 = "VS-terraform-xc-bot"
   port                        = 443
   bot_defense                 = "enabled"
-  pool                        = bigip_ltm_pool.pool.name
-  profiles                    = [bigip_saas_bot_defense_profile.test-bot-defense]
+  pool                        = bigip_ltm_pool.pool2.name
+  profiles                    = [bigip_saas_bot_defense_profile.test-bot-defense2]
 #  source_address_translation = "automap"
 #  translate_address          = "enabled"
 #  translate_port             = "enabled"
