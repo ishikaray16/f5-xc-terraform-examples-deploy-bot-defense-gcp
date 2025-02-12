@@ -52,12 +52,12 @@ resource "bigip_as3" "as3-example1" {
 
 resource "bigip_ltm_monitor" "monitor2" {
   name                    = "/Common/terraform_monitor_bd"
-  parent                  = "/Common/https_443"
+  parent                  = "/Common/http"
 }
 
 resource "bigip_ltm_node" "node2" {
-  name                    = var.bot_pool_name
-  address                 = var.bot_pool_name
+  name                    = "ibd-webus.fastcache.net"
+  address                 = "ibd-webus.fastcache.net"
   monitor                 = "none"
   description             = "Terraform-Node-Bot-Defense"
 }
@@ -79,7 +79,7 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense2" {
   ssl_profile             = "serverssl"
   protected_endpoints {
     name                  = "p_endpoint"
-    host                  = var.host_name
+    host                  = "4.155.79.249"
     path                  = "/user/signin"
     endpoint_label        = "/login"
     post                  = "enabled"
