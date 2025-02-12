@@ -99,7 +99,7 @@ resource "bigip_ltm_virtual_server" "https2" {
   destination                 = local.bigip_private
   description                 = "VS-terraform-xc-bot"
   port                        = 443
-  bot_defense                 = "enabled"
+  #bot_defense                 = "enabled"
   pool                        = bigip_ltm_pool.pool2.name
   profiles                    = [bigip_saas_bot_defense_profile.test-bot-defense2]
 #  source_address_translation = "automap"
