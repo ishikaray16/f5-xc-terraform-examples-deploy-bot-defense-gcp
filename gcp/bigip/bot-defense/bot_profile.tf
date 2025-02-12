@@ -77,7 +77,7 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   application_id          = "89fb0bfcb4bf4c578fad9adb37ce3b19"
   tenant_id               = "a-aavN9vaYOV"
   api_key                 = "49840d1dd6fa4c4d86c88762eb398eee"
-  shape_protection_pool   = "/Common/cs1.pool"
+  shape_protection_pool   = bigip_ltm_pool.pool2.name
   ssl_profile             = "/Common/cloud-service-default-ssl"
   protected_endpoints {
     name                  = "p_endpoint"
