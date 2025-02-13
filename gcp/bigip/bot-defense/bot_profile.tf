@@ -83,24 +83,24 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   }
 }
 
-#resource "bigip_ltm_pool_attachment" "attach_node2" {
-#  pool                      = bigip_ltm_pool.pool2.name
-#  node                      = "${bigip_ltm_node.node2.name}:443"
-#}
+resource "bigip_ltm_pool_attachment" "attach_node2" {
+  pool                      = bigip_ltm_pool.pool2.name
+  node                      = "${bigip_ltm_node.node2.name}:443"
+}
 
 # BINDING THE XC BOT PROFILE TO VIRTUAL SERVER
 
-#resource "bigip_ltm_virtual_server" "https_bd" {
-#  name                        = "/Common/terraform_bot_vs"
-#  destination                 = "/
-#  description                 = "VS-terraform-xc-bot"
-#  port                        = 80
-#  pool                        = bigip_ltm_pool.pool2.name
-#  profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense.name]
+resource "bigip_ltm_virtual_server" "https_bd" {
+  name                        = "/Common/terraform_bot_vs"
+  destination                 = "/
+  description                 = "VS-terraform-xc-bot"
+  port                        = 80
+  pool                        = bigip_ltm_pool.pool2.name
+  profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense.name]
   #client_profiles             = ["/Common/tcp"]
   #server_profiles             = ["/Common/tcp-lan-optimized"]
   #persistence_profiles        = ["/Common/source_addr", "/Common/hash"]
   #source_address_translation  = "automap"
   #translate_address           = "enabled"
   #translate_port              = "enabled"
-#}
+}
