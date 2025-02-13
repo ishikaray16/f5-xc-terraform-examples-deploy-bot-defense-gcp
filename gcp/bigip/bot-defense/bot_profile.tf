@@ -91,17 +91,16 @@ resource "bigip_ltm_pool_attachment" "attach_node2" {
 # BINDING THE XC BOT PROFILE TO VIRTUAL SERVER
 
 resource "bigip_ltm_virtual_server" "https_bd" {
-  name                        = "/Common/terraform_vs2"
+  name                        = "/Common/terraform_bot_vs"
   destination                 = local.app_ip
   description                 = "VS-terraform-xc-bot"
   port                        = 443
-  #bot_defense                 = "enabled"
   pool                        = bigip_ltm_pool.pool2.name
   profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense.name]
-  client_profiles             = ["/Common/tcp"]
-  server_profiles             = ["/Common/tcp-lan-optimized"]
-  persistence_profiles        = ["/Common/source_addr", "/Common/hash"]
-  source_address_translation  = "automap"
-  translate_address           = "enabled"
-  translate_port              = "enabled"
+  #client_profiles             = ["/Common/tcp"]
+  #server_profiles             = ["/Common/tcp-lan-optimized"]
+  #persistence_profiles        = ["/Common/source_addr", "/Common/hash"]
+  #source_address_translation  = "automap"
+  #translate_address           = "enabled"
+  #translate_port              = "enabled"
 }
