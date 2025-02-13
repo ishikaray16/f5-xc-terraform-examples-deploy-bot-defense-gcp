@@ -53,7 +53,7 @@ resource "bigip_ltm_monitor" "monitor2" {
 
 resource "bigip_ltm_node" "node2" {
   name                    = "/Common/ibd-webus.fastcache.net"
-  address                 = "ibd-webus.fastcache.net"
+  address                 = "/Common/ibd-webus.fastcache.net"
   monitor                 = "none"
   description             = "Terraform-Node-Bot-Defense"
 }
