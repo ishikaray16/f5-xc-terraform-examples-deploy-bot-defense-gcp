@@ -94,7 +94,7 @@ resource "bigip_ltm_virtual_server" "https_bd" {
   name                        = "/Common/terraform_bot_vs"
   destination                 = local.app_ip
   description                 = "VS-terraform-xc-bot"
-  port                        = 443
+  port                        = 80
   pool                        = bigip_ltm_pool.pool2.name
   profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense.name]
   #client_profiles             = ["/Common/tcp"]
