@@ -53,13 +53,9 @@ resource "bigip_ltm_monitor" "monitor2" {
 
 resource "bigip_ltm_node" "node2" {
   name                    = "/Common/terraform_node_bd"
-  #address                 = "/Common/ibd-webus.fastcache.net"
+  address                 = "ibd-webus.fastcache.net"
   monitor                 = "none"
   description             = "Terraform-Node-Bot-Defense"
-  fqdn {
-    address_family = "/Common/ibd-webus.fastcache.net"
-    interval       = "3000"
-  }
 }
 
 resource "bigip_ltm_pool" "pool2" {
