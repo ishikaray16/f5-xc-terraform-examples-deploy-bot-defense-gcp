@@ -92,7 +92,7 @@ resource "bigip_ltm_pool_attachment" "attach_node2" {
 
 resource "bigip_ltm_virtual_server" "https_bd" {
   name                        = "/Common/terraform_bot_vs"
-  destination                 = "/
+  destination                 = "10.0.0.2"
   description                 = "VS-terraform-xc-bot"
   port                        = 80
   pool                        = bigip_ltm_pool.pool2.name
