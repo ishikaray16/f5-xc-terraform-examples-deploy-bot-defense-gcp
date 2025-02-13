@@ -31,17 +31,17 @@ resource "bigip_ltm_pool_attachment" "attach_node" {
   node                      = "${bigip_ltm_node.node.name}:80"
 }
 
-resource "bigip_ltm_virtual_server" "http" {
-  name                       = "/Common/terraform_vs"
-  destination                = local.bigip_private
-  description                = "VS-terraform"
-  port                       = 80
-  pool                       = bigip_ltm_pool.pool.name
-  profiles                   = ["/Common/tcp", "/Common/http"]
-  source_address_translation = "automap"
-  translate_address          = "enabled"
-  translate_port             = "enabled"
-}
+#resource "bigip_ltm_virtual_server" "http" {
+#  name                       = "/Common/terraform_vs"
+#  destination                = local.bigip_ip
+#  description                = "VS-terraform"
+#  port                       = 80
+#  pool                       = bigip_ltm_pool.pool.name
+#  profiles                   = ["/Common/tcp", "/Common/http"]
+#  source_address_translation = "automap"
+#  translate_address          = "enabled"
+#  translate_port             = "enabled"
+#}
 
 
 # CREATING XC BOT DFEENSE PROFILE ON BIGIP
@@ -74,8 +74,7 @@ resource "bigip_saas_bot_defense_profile" "test-bot-defense" {
   ssl_profile             = "/Common/cloud-service-default-ssl"
   protected_endpoints {
     name                  = "p_endpoint"
-    host                  = "4.155.79.249"
-    #path                  = "/user/signin"
+    host                  = local.bigip_ip
     endpoint              = "/login"
     post                  = "enabled"
     put                   = "enabled"
@@ -92,15 +91,15 @@ resource "bigip_ltm_pool_attachment" "attach_node2" {
 
 resource "bigip_ltm_virtual_server" "https_bd" {
   name                        = "/Common/terraform_bot_vs"
-  destination                 = "10.0.0.2"
+  destination                 = local.bigip_private
   description                 = "VS-terraform-xc-bot"
   port                        = 80
-  pool                        = bigip_ltm_pool.pool2.name
+  pool                        = bigip_ltm_pool.pool.name
   profiles                    = ["/Common/http", bigip_saas_bot_defense_profile.test-bot-defense.name]
-  #client_profiles             = ["/Common/tcp"]
-  #server_profiles             = ["/Common/tcp-lan-optimized"]
-  #persistence_profiles        = ["/Common/source_addr", "/Common/hash"]
-  #source_address_translation  = "automap"
-  #translate_address           = "enabled"
-  #translate_port              = "enabled"
+  client_profiles             = ["/Common/tcp"]
+  server_profiles             = ["/Common/tcp-lan-optimized"]
+  persistence_profiles        = ["/Common/source_addr", "/Common/hash"]
+  source_address_translation  = "automap"
+  translate_address           = "enabled"
+  translate_port              = "enabled"
 }
