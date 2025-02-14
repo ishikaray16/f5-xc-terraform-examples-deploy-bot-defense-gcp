@@ -31,18 +31,6 @@ resource "bigip_ltm_pool_attachment" "attach_node" {
   node                      = "${bigip_ltm_node.node.name}:80"
 }
 
-#resource "bigip_ltm_virtual_server" "http" {
-#  name                       = "/Common/terraform_vs"
-#  destination                = local.bigip_ip
-#  description                = "VS-terraform"
-#  port                       = 80
-#  pool                       = bigip_ltm_pool.pool.name
-#  profiles                   = ["/Common/tcp", "/Common/http"]
-#  source_address_translation = "automap"
-#  translate_address          = "enabled"
-#  translate_port             = "enabled"
-#}
-
 
 # CREATING XC BOT DFEENSE PROFILE ON BIGIP
 
@@ -87,7 +75,7 @@ resource "bigip_ltm_pool_attachment" "attach_node2" {
   node                      = "${bigip_ltm_node.node2.name}:443"
 }
 
-# BINDING THE XC BOT PROFILE TO VIRTUAL SERVER
+# BINDING AIRLINE APP & XC BOT PROFILE TO VIRTUAL SERVER
 
 resource "bigip_ltm_virtual_server" "https_bd" {
   name                        = "/Common/terraform_bot_vs"
