@@ -390,8 +390,10 @@ jobs:
 
       - name: Run Traffic
         run: |
-          cp ./tools/run-curl-traffic.sh .
+          if [ ! -f ../run-curl-traffic.sh ]; then
+            cp run-curl-traffic.sh ../run-curl-traffic.sh
+          fi
           export cname=$(terraform output -raw lb_cname)
           echo $cname 
           sleep 30 
-          sh run-curl-traffic.sh "$cname/user/signin"
+          sh ../run-curl-traffic.sh "$cname/user/signin"
