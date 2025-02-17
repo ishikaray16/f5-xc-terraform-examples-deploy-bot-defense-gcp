@@ -379,9 +379,6 @@ jobs:
 
       - name: Run Traffic
         run: |
-          # if [ ! -f ../run-curl-traffic.sh ]; then
-          #   cp run-curl-traffic.sh ../run-curl-traffic.sh
-          # fi
           cp ../../../tools/run-curl-traffic.sh .
           export cname=$(terraform output -raw bigip_public_ip)
           echo $cname 
