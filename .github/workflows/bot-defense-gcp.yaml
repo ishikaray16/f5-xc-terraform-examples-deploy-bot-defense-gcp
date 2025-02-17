@@ -380,7 +380,7 @@ jobs:
       - name: Run Traffic
         run: |
           cp ../../../tools/run-curl-traffic.sh .
-          terraform refresh
+          terraform refresh -target=bigip_public_ip
           export cname=$(terraform output -raw bigip_public_ip)
           echo $cname 
           sleep 10 
