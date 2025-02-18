@@ -4,7 +4,7 @@ do
   COMMAND="curl -s '$1' -i -X POST -d 'username=1&password=1'"
   echo $COMMAND
   eval $COMMAND
-  sleep 10
+  sleep 30
   echo CURL Credential Stuffing attempt "$run" done
   sleep 2
 done
