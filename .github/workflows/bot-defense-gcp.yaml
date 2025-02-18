@@ -381,7 +381,7 @@ jobs:
         run: |
           cp ../../../tools/run-curl-traffic.sh .
           terraform refresh -target=terraform_bigip.bigip_public_ip
-          export cname=$(terraform output -raw terraform_bigip.bigip_public_ip)
+          export cname=$(terraform output -raw outputs.bigip_public_ip)
           echo $cname 
           sleep 10 
           sh run-curl-traffic.sh "$cname/user/signin"
