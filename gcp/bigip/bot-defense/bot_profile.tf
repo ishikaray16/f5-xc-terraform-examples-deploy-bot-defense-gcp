@@ -1,4 +1,4 @@
-# CREATING NODE, POOL & VIRTUAL SERVER FOR BACKEND APPLICATION
+# CREATING NODE & POOL  FOR BACKEND APPLICATION
 
 provider "bigip" {
     address               = local.bigip_ip
