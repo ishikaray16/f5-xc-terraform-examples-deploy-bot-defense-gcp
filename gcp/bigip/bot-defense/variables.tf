@@ -28,3 +28,8 @@ variable "api_key" {
   type        = string
   default     = ""
 }
+
+output "bigip_ip" {
+  value       = local.bigip_ip
+  description = "BIGIP IP"
+}
