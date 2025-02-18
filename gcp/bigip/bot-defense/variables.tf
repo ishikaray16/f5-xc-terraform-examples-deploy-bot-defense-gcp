@@ -28,9 +28,3 @@ variable "api_key" {
   type        = string
   default     = ""
 }
-
-output "bigip_ip" {
-  value       = local.bigip_ip
-  sensitive   = true
-  description = "BIGIP IP"
-}
