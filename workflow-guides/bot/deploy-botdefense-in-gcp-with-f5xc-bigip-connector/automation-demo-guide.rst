@@ -155,12 +155,15 @@ Workflow File: `bot-defense-gcp-destroy.yaml </.github/workflows/bot-defense-gcp
 
 - Build will run and can be monitored in the GitHub Actions tab and TF Cloud console. ``If CICD failed because of intermittent timing issue, rerun the work-flow again.``
 
-**STEP 4:** Once the pipeline completes, verify your BIGIP instance is accessible and Virtual Server is created under Distributed Cloud Services > Bot Defense. Public IP can be found under BIGIP Apply pipeline run as shown below.
+.. image:: assets/deploy-run.png
 
-.. image:: assets/Public IP.png
+**STEP 4:** Once the pipeline completes, verify your BIGIP instance is accessible and Virtual Server is created under Distributed Cloud Services > Bot Defense. Public IP can be found under Deploy BIGIP Apply pipeline run as shown below.
+
+.. image:: assets/public_ip.png
 
 BIGIP instance is accessible at https://<Public-IP-address>:8443
 
+.. image:: assets/bigip_vs.png
 
 **STEP 5:** Verify the JavaScript injection in the GKE application via the BIG-IP.
 
@@ -168,8 +171,14 @@ AirLine application is accessible at http://<Public-IP-address>
 
 Within the <head> tag you should see three lines containing the following: 1) src="/customer1.js?matcher", 2) src="/customer1.js?single"></script>, 3) src="/customer1.js?async
 
+.. image:: assets/js_injection.png
+
 **STEP 6:** Now, return to the F5 XC Console and verify the monitoring page over Overview > Monitor. You can see the bot detections of our newly protected Cloudfront Application. Here you can monitor and respond to events that are identified as Bot traffic
+
+.. image:: assets/xc-bot-test.png
+
+.. image:: assets/xc-bot-test2.png
 
 **STEP 7:** If you want to destroy the entire setup, checkout a branch with name ``destroy-bot-defense-gcp`` which will trigger destroy workflow and will remove all created resources.
 
-
+.. image:: assets/destroy-run.png
