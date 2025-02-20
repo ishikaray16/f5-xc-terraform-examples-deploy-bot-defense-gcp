@@ -39,7 +39,11 @@ Create the XC Bot Defense Connector
   
 5: Set the Application Region to "US", Connector Type "F5 BIG-IP iApp (v17.0 or greater) > save and exit
 
+.. image:: assets/xc_bot_connector.png
+
 6: Click the Elipses and copy all of the ID's, keys, hostnames, and headers and save them into a file 
+
+.. image:: assets/xc_bot_review.png
 
 
 Terraform Cloud
@@ -151,9 +155,12 @@ Workflow File: `bot-defense-gcp-destroy.yaml </.github/workflows/bot-defense-gcp
 
 - Build will run and can be monitored in the GitHub Actions tab and TF Cloud console. ``If CICD failed because of intermittent timing issue, rerun the work-flow again.``
 
-**STEP 4:** Once the pipeline completes, verify your BIGIP instance is accessible and Virtual Server is created under Distributed Cloud Services > Bot Defense.
- 
+**STEP 4:** Once the pipeline completes, verify your BIGIP instance is accessible and Virtual Server is created under Distributed Cloud Services > Bot Defense. Public IP can be found under BIGIP Apply pipeline run as shown below.
+
+.. image:: assets/Public IP.png
+
 BIGIP instance is accessible at https://<Public-IP-address>:8443
+
 
 **STEP 5:** Verify the JavaScript injection in the GKE application via the BIG-IP.
 
