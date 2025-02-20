@@ -1,4 +1,4 @@
-Getting started with Bot Defense GCP terraform automation
+Getting started with Bot Defense in GCP with F5XC BIGIP Connector terraform automation
 #########################################################
 
 Prerequisites
