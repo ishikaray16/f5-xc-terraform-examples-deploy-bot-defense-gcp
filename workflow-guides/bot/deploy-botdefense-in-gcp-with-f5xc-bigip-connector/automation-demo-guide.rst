@@ -161,13 +161,13 @@ Workflow File: `bot-defense-gcp-destroy.yaml </.github/workflows/bot-defense-gcp
 
 .. image:: assets/public_ip.png
 
-BIGIP instance is accessible at https://<Public-IP-address>:8443
+BIGIP instance is accessible at https://<Public-IP-address-BIGIP>:8443
 
 .. image:: assets/bigip_vs.png
 
 **STEP 5:** Verify the JavaScript injection in the GKE application via the BIG-IP.
 
-AirLine application is accessible at http://<Public-IP-address>
+Airline demo application is accessible at http://<Public-IP-address-BIGIP>
 
 Within the <head> tag you should see three lines containing the following: 1) src="/customer1.js?matcher", 2) src="/customer1.js?single"></script>, 3) src="/customer1.js?async
 
