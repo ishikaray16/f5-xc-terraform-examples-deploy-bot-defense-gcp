@@ -1,25 +1,15 @@
 #Global
-project_prefix  = "ishika-bd"
+project_prefix  = "any name"
 
 # INFRA
 gcp_region      = "asia-south1"
-gcp_project_id  = "f5-gcs-5611-mktg-secsols"
-service_account = "ishika@f5-gcs-5611-mktg-secsols.iam.gserviceaccount.com"
+gcp_project_id  = ""
+service_account = ""
 
 #Assets
-<<<<<<< HEAD
-nic             = false
-nap             = false
-bigip           = true
-bigip-cis       = false
-aks-cluster     = false
-azure-vm        = false
-
-=======
 nic = false
 nap = false
 bigip = false
 bigip-cis = false
 aks-cluster = false
 azure-vm = false
->>>>>>> bc35437b8c16cfd5b79bd2ec15f0a0d76213136c
