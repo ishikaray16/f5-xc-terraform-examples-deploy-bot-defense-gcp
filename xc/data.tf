@@ -11,7 +11,7 @@ data "tfe_outputs" "gcp-infra" {
 }
 
 data "tfe_outputs" "bigip" {
-  count = var.vk8s ? 0 : (data.tfe_outputs.infra.0.values.bigip ? 1 : 0)
+  count = false ? 0 : (data.tfe_outputs.infra.0.values.bigip ? 1 : 0)
   organization = var.tf_cloud_organization
   workspace = "bigip-base"
 }
