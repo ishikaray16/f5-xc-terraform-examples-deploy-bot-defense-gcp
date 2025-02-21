@@ -10,11 +10,11 @@ data "tfe_outputs" "gcp-infra" {
   workspace = "${coalesce(var.gcp, "gcp-infra")}"
 }
 
-data "tfe_outputs" "bigip" {
-  count = false ? 0 : (data.tfe_outputs.infra.0.values.bigip ? 1 : 0)
-  organization = var.tf_cloud_organization
-  workspace = "bigip-base"
-}
+#data "tfe_outputs" "bigip" {
+#  count = false ? 0 : (data.tfe_outputs.infra.0.values.bigip ? 1 : 0)
+#  organization = var.tf_cloud_organization
+#  workspace = "bigip-base"
+#}
 data "tfe_outputs" "nap" {
   count = var.vk8s ? 0 : (data.tfe_outputs.infra.0.values.nap ? 1 : 0)
   organization = var.tf_cloud_organization
