@@ -4,12 +4,12 @@ vk8s = false
 xc_project_prefix = "demo"
 
 #XC Global
-api_url = "https://<Your Tenant>.console.ves.volterra.io/api"
-xc_tenant = "Your tenant name"
-xc_namespace = "Your XC namespace"
+api_url = "https://treino.console.ves.volterra.io/api"
+xc_tenant = "treino-ufahspac"
+xc_namespace = "default"
 
 #XC LB
-app_domain = "Your App Domain"
+app_domain = "ce-waf.f5-hyd-xcdemo.com"
 
 #XC WAF
 xc_waf_blocking = true
@@ -25,8 +25,8 @@ xc_service_discovery = "false"
 k8s_pool = "false"
 serviceName = ""
 serviceport = ""
-advertise_sites = "false"
-http_only = "false"
+advertise_sites = "true"
+http_only = "true"
 xc_delegation = "false"
 ip_address_on_site_pool = "false"
 eks_ce_site = "false"
@@ -68,11 +68,11 @@ xc_ddos_pro = false
 xc_mud = false
 
 # CE configs
-gcp_ce_site = "false"
+gcp_ce_site = "true"
 aws_ce_site = "false"
 site_name = ""
 
 # infra (Needed values: aws-infra, azure-infra, gcp-infra)
 aws   = ""
 azure = ""
-gcp   = ""
+gcp   = "gcp-infra"
