@@ -30,18 +30,20 @@ Create the XC Bot Defense Connector
 1: Log into your tenant via https://console.ves.volterra.io ensure you have a unique namespace configured. If not, navigate to Administration --> My Namespaces --> Add New
 
 .. image:: assets/xc-bot-tile.png
+
+.. image:: assets/xc_bot_add_application.png
   
 2: Switch into your newly created namespace
   
 3: Click on the Bot Defense Tile and go to manage > applications > add application
   
-4: Use the name "gcp-xcbotdefense-connector" and a description of "XC Bot Defense Connector for BIG-IP in GCP" 
+4: Use any name and a description for "XC Bot Defense Connector for BIG-IP in GCP". For example, here "gcp-xcbotdefense-connector" is used.
   
 5: Set the Application Region to "US", Connector Type "F5 BIG-IP iApp (v17.0 or greater) > save and exit
 
 .. image:: assets/xc_bot_connector.png
 
-6: Click the Elipses and copy all of the ID's, keys, hostnames, and headers and save them into a file 
+6: Click the ellipses and copy all of the ID's, keys, hostnames, and headers and save them into a file 
 
 .. image:: assets/xc_bot_review.png
 
@@ -100,7 +102,7 @@ GitHub
    -  TF_CLOUD_WORKSPACE_APP : f5air
    -  TF_CLOUD_WORKSPACE_BIGIP : bigip
    -  TF_CLOUD_WORKSPACE_BOTDEFENSE : bigip-bd
-   -  TF_CLOUD_WORKSPACE_GCP_INFRA : gcp-infra
+   -  TF_CLOUD_WORKSPACE_INFRA : gcp-infra
    -  TF_CLOUD_WORKSPACE_GKE : gke
 
 Workflow Runs
@@ -129,7 +131,7 @@ F5 XC Bot Defense on GCP Destroy                destroy-bot-defense-gcp
 
 Workflow File: `bot-defense-gcp-destroy.yaml </.github/workflows/bot-defense-gcp-destroy.yaml>`__
 
-**STEP 2:** Rename ``xc/terraform.tfvars.examples`` to ``xc/terraform.tfvars`` and add the following data:
+**STEP 2:** Rename ``gcp/infra/terraform.tfvars.examples`` to ``gcp/infra/terraform.tfvars`` and add the following data:
 
 -  project_prefix = "prefix of your choice"
 
