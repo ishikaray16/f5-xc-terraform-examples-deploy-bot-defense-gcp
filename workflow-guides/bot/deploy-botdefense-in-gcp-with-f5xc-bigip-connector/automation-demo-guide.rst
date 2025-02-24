@@ -175,12 +175,16 @@ Within the <head> tag you should see three lines containing the following: 1) sr
 
 .. image:: assets/js_injection.png
 
-**STEP 6:** Now, return to the F5 XC Console and verify the monitoring page over Overview > Monitor. You can see the bot detections of our newly protected Cloudfront Application. Here you can monitor and respond to events that are identified as Bot traffic
+**STEP 6:** As shown below, "Failure" message in the Configure Bot Defense on BIGIP, under Run Traffic confirms the blocking of the Bot Traffic by the XC Bot Connector.
+
+.. image:: assets/xc-bot-verify.png
+
+**STEP 7:** Now, return to the F5 XC Console and verify the monitoring page over Overview > Monitor. You can see the bot detections of our newly protected Cloudfront Application. Here you can monitor and respond to events that are identified as Bot traffic
 
 .. image:: assets/xc-bot-test.png
 
 .. image:: assets/xc-bot-test2.png
 
-**STEP 7:** If you want to destroy the entire setup, checkout a branch with name ``destroy-bot-defense-gcp`` which will trigger destroy workflow and will remove all created resources.
+**STEP 8:** If you want to destroy the entire setup, checkout a branch with name ``destroy-bot-defense-gcp`` which will trigger destroy workflow and will remove all created resources.
 
 .. image:: assets/destroy-run.png
