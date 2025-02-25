@@ -15,9 +15,3 @@ variable "bigip_password" {
   description = "BIGIP instance password"
   default     = "ApiSecurity@12345"
 }
-
-variable "ssh_key" {
-  type        = string
-  description = "ssh_key"
-  default     = ""
-}
