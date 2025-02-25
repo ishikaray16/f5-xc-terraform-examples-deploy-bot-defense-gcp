@@ -16,7 +16,7 @@ variable "bigip_password" {
   default     = "ApiSecurity@12345"
 }
 
-variable "id_rsa.pub" {
+variable "ssh_key" {
   type        = string
   description = "ssh_key"
   default     = ""
