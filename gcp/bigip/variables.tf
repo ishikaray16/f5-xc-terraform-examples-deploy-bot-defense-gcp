@@ -15,8 +15,3 @@ variable "bigip_password" {
   description = "BIGIP instance password"
   default     = "ApiSecurity@12345"
 }
-
-variable "github_token" {
-  description = "GitHub Personal Access Token"
-  type        = string
-}
